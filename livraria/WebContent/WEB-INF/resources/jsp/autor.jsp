@@ -2,11 +2,16 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="ISO-8859-1">
+	
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	
+		
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
@@ -76,11 +81,15 @@
 					<tr>
 						<td>${at.nome}</td>
 						<td>${at.email}</td>
-						<td>${at.dataNascimento}</td>
+						
+						<td>
+						<fmt:parseDate  value="${at.dataNascimento}"  type="date" pattern="yyyy-MM-dd" var="parsedDate" />
+						<fmt:formatDate value="${parsedDate}" type="date" pattern="dd/MM/yyyy" />
+						
 					</tr>	
 				</c:forEach>
 			</tbody>
 		</table>
-	
+		
 	</body>
 </html>
